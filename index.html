@@ -14,8 +14,12 @@
 </head>
 <body>
     <header>
-        <img src="images/weather-icon.svg" width="50" height="50">
-        <h1>Weather Now</h1>
+        <div class="header-title bottom-border">
+            <img src="images/weather-icon.png" width="100" height="100">
+            <h1>Weather Now</h1>
+        </div>
+        <div class="header-menu">
+            <button id="menu" aria-label="HamburgerMenu"></button>
         <nav class="navigation">
             <a href="#" title="cwd" id="cwd" class="active">Current Weather Data</a>
             <a href="#" title="hf" id="hf">Hourly Forecast</a>
@@ -23,12 +27,48 @@
             <a href="#" title="wa" id="wa">Weather Alerts</a>
             <a href="#" title="rbw" id="rbw">Route-Based Weather</a>
         </nav>
+        </div>
     </header>
     <main>
-        <h2>Weather Info</h2>
-        <p>Placeholders will be given in future tasks (CSS)</p>
+        <h2>Current Weather Data</h2>
+        <div class="cwd-container weather-box">
+            <h3>Enter a city</h3>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search..."/>
+                <img src="images/search-icon.svg" id="searchButton" alt="Search"/>
+            </div>
+            <div class="weather-content">
+                <div class="weather-info">
+                    <p id="city">Barretos - <span>SP</span></p>
+                    <p>Friday, Apr 11th</p><br>
+                    <p>Clear Sky</p>
+                    <p>Temperature: 22°C</p>
+                    <p>Air Quality Index: 40</p>
+                </div>
+                <div class="weather-image">
+                    <img src="images/weather-icon.svg" alt="Weather Icon" width="150" height="150">
+                </div>
+            </div>
+            <div class="weekly-weather">
+                <div class="daily-weather weather-box">
+                    <p class="bold-text">Mon</p>
+                    <img src="images/weather2-icon.svg" alt="Weather Icon" width="100" height="100">
+                    <p>23° / 25°</p>
+                </div>
+                <div class="daily-weather weather-box">
+                    <p class="bold-text">Tue</p>
+                    <img src="images/weather2-icon.svg" alt="Weather Icon" width="100" height="100">
+                    <p>23° / 25°</p>
+                </div>
+                <div class="daily-weather weather-box">
+                    <p class="bold-text">Wed</p>
+                    <img src="images/weather2-icon.svg" alt="Weather Icon" width="100" height="100">
+                    <p>23° / 25°</p>
+                </div>
+            </div>
+        </div>
     </main>
-    <footer> &copy; 2025 - Footer Content - Vinicius Rocca</footer>
-    <script defer src="scripts/weather.js"></script>
+    <footer> &copy; 2025 - Vinicius Rocca</footer>
+    <script src="scripts/main.js" type="module"></script>
 </body>
 </html>
