@@ -1,3 +1,4 @@
-import HamburgerMenu from "./hamburger.mjs";
+import { HamburgerMenu, ActiveMenu} from "./utils.mjs";
 
 HamburgerMenu();
+ActiveMenu();

@@ -20,12 +20,12 @@
         </div>
         <div class="header-menu">
             <button id="menu" aria-label="HamburgerMenu"></button>
-        <nav class="navigation">
-            <a href="#" title="cwd" id="cwd" class="active">Current Weather Data</a>
-            <a href="#" title="hf" id="hf">Hourly Forecast</a>
-            <a href="#" title="wa" id="wa">Weather Alerts</a>
-            <a href="#" title="rbw" id="rbw">Route-Based Weather</a>
-        </nav>
+            <nav class="navigation">
+                <a href="#" title="cwd" id="cwd" class="active">Current Weather Data</a>
+                <a href="pages/hourly-page.html" title="hf" id="hf">Hourly Forecast</a>
+                <a href="#" title="wa" id="wa">Weather Alerts</a>
+                <a href="#" title="rbw" id="rbw">Route-Based Weather</a>
+            </nav>
         </div>
     </header>
     <main>
@@ -59,7 +59,7 @@
                     <img src="images/weather2-icon.svg" alt="Weather Icon" width="100" height="100">
                     <p>23° / 25°</p>
                 </div>
-                <div class="daily-weather weather-box">
+                <div class="daily-weather weather-box" id="last-one">
                     <p class="bold-text">Wed</p>
                     <img src="images/weather2-icon.svg" alt="Weather Icon" width="100" height="100">
                     <p>23° / 25°</p>
@@ -67,7 +67,11 @@
             </div>
         </div>
     </main>
-    <footer> &copy; 2025 - Vinicius Rocca</footer>
+    <footer>
+        <p>&copy;2025 - Weather Now</p>
+        <p>Vinicius Rocca</p>
+        <p>WDD 330 - Web Frontend Development II</p>
+    </footer>
     <script src="scripts/main.js" type="module"></script>
 </body>
 </html>

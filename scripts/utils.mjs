@@ -1,4 +1,4 @@
-export default function HamburgerMenu(){
+export function HamburgerMenu(){
     const hamButton = document.querySelector('#menu');
     const navigation = document.querySelector('.navigation');
     
@@ -6,4 +6,8 @@ export default function HamburgerMenu(){
         navigation.classList.toggle('open');
         hamButton.classList.toggle('open');
     });
+}
+
+export function ActiveMenu(){
+    return true;
 }
