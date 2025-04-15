@@ -1,5 +1,5 @@
-import { HamburgerMenu, ActiveMenu, displayCurrentWeather} from "./utils.mjs";
+import { HamburgerMenu, ActiveMenu, apiFetch} from "./utils.mjs";
 
 HamburgerMenu();
-displayCurrentWeather();
 ActiveMenu();
+apiFetch();

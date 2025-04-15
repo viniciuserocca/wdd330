@@ -18,14 +18,13 @@ const weatherForecast = document.querySelector('.weekly-weather');
 const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=-20.57266509249185&lon=-48.567067915293904&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597";
 const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=-20.57266509249185&lon=-48.567067915293904&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597";
 
-async function apiFetch() {
+export async function apiFetch() {
     try {
         const weatherResponse = await fetch(weatherUrl);
         const forecastResponse = await fetch(forecastUrl);
 
         if (weatherResponse.ok && forecastResponse.ok) {
             const weatherData = await weatherResponse.json();
-            console.log(weatherData);
             const forecastData = await forecastResponse.json();
             displayCurrentWeather(weatherData, forecastData);
         } else {
@@ -52,7 +51,7 @@ function formatTimestamp(timestamp) {
     return formattedDate;
 }
 
-export function displayCurrentWeather(weatherData, forecastData) {
+function displayCurrentWeather(weatherData, forecastData) {
 
     const weatherInfo = document.createElement('div');
     let weatherLocation= document.createElement('p');
@@ -104,10 +103,9 @@ export function displayCurrentWeather(weatherData, forecastData) {
         const date = entry.dt_txt.split(' ')[0];
         const tempMin = entry.main.temp_min;
         const tempMax = entry.main.temp_max;
-        const icon = entry.weather[0].icon;
         
         if (!dailyTemperatures[date]) {
-            dailyTemperatures[date] = { min: tempMin, max: tempMax, icon: icon };
+            dailyTemperatures[date] = { min: tempMin, max: tempMax };
         } else {
             dailyTemperatures[date].min = Math.min(dailyTemperatures[date].min, tempMin);
             dailyTemperatures[date].max = Math.max(dailyTemperatures[date].max, tempMax);
@@ -127,8 +125,6 @@ export function displayCurrentWeather(weatherData, forecastData) {
     for (const date in nextThreeDays) {
         const { min, max} = nextThreeDays[date];
         const weekday = new Date(date  + "T00:00").toLocaleDateString("en-US", { weekday: "short" });
-        
-
 
         let forecastCard = document.createElement('div');
         let forecastDate = document.createElement('p');
@@ -152,9 +148,3 @@ export function displayCurrentWeather(weatherData, forecastData) {
         weatherForecast.appendChild(forecastCard);
         }
 }
-
-export function DisplayHourlyForecast(forecastData){
-    return forecastData;
-}
-
-apiFetch();
