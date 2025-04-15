@@ -1,5 +1,5 @@
-import { HamburgerMenu, ActiveMenu, apiFetch} from "./utils.mjs";
+import { HamburgerMenu} from "./utils.mjs";
+import { getCurrentPosition } from "./getCurrentPosition.mjs";
 
 HamburgerMenu();
-ActiveMenu();
-apiFetch();
+getCurrentPosition();

@@ -1,9 +1,49 @@
+export function getCurrentPosition() {
+    const DEFAULT_LAT = 43.82256070108409;
+    const DEFAULT_LON = -111.7918827257959;
 
-const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=-20.57266509249185&lon=-48.567067915293904&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597";
+    const savedLocation = JSON.parse(localStorage.getItem("userLocation"));
 
-export async function apiFetch() {
+    if (savedLocation) {
+        fetchForecastData(savedLocation.lat, savedLocation.lon);
+        return; 
+    } else {
+        fetchForecastData(DEFAULT_LAT, DEFAULT_LON);
+    }
+
+    if ("geolocation" in navigator) {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+    } else {
+        console.warn("Geolocation not supported. Using default.");
+    }
+
+    function successCallback(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        localStorage.setItem("userLocation", JSON.stringify({ lat, lon }));
+        fetchForecastData(lat, lon);
+    }
+
+    function errorCallback(error) {
+        console.warn("Geolocation failed. Using default:", error.message);
+        fetchForecastData(DEFAULT_LAT, DEFAULT_LON);
+    }
+
+    function fetchForecastData(lat, lon) {
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597`;
+        apiFetch(forecastUrl);
+    }
+}
+
+async function apiFetch(forecastUrl) {
     try {
-
         const forecastResponse = await fetch(forecastUrl);
 
         if (forecastResponse.ok) {
@@ -21,13 +61,11 @@ function displayHourlyForecast(forecastData) {
     const menuContainer = document.getElementById('forecastMenu');
     const forecastContainer = document.getElementById('hourlyForecast');
 
-    // Clear old content
     menuContainer.innerHTML = '';
     forecastContainer.innerHTML = '';
 
     const dailyForecasts = {};
 
-    // Group forecast entries by date
     forecastData.list.forEach(entry => {
         const date = entry.dt_txt.split(' ')[0];
         if (!dailyForecasts[date]) {
@@ -36,14 +74,12 @@ function displayHourlyForecast(forecastData) {
         dailyForecasts[date].push(entry);
     });
 
-    // Get next 5 days starting from today
     const today = new Date().toISOString().split('T')[0];
     const nextFiveDays = Object.keys(dailyForecasts)
         .filter(date => date >= today)
         .sort()
         .slice(0, 5);
 
-    // Create day selection menu
     nextFiveDays.forEach((date, index) => {
         const weekday = new Date(date + "T00:00").toLocaleDateString("en-US", { weekday: "short" });
 
@@ -61,10 +97,8 @@ function displayHourlyForecast(forecastData) {
         menuContainer.appendChild(button);
     });
 
-    // Show forecast for the first day by default
     renderForecastCards(dailyForecasts[nextFiveDays[0]]);
 
-    // Helper to render cards for a selected day
     function renderForecastCards(entries) {
         forecastContainer.innerHTML = '';
 

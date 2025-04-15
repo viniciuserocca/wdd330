@@ -1,6 +1,5 @@
-import { HamburgerMenu, ActiveMenu} from "./utils.mjs";
-import { apiFetch } from "./displayForecast.mjs";
+import { HamburgerMenu } from "./utils.mjs";
+import { getCurrentPosition } from "./displayForecast.mjs";
 
 HamburgerMenu();
-ActiveMenu();
-apiFetch();
+getCurrentPosition();

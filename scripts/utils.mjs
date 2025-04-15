@@ -8,17 +8,10 @@ export function HamburgerMenu(){
     });
 }
 
-export function ActiveMenu(){
-    return true;
-}
-
 const weatherContent = document.querySelector('.weather-content');
 const weatherForecast = document.querySelector('.weekly-weather');
 
-const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=-20.57266509249185&lon=-48.567067915293904&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597";
-const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=-20.57266509249185&lon=-48.567067915293904&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597";
-
-export async function apiFetch() {
+export async function apiFetch(weatherUrl, forecastUrl) {
     try {
         const weatherResponse = await fetch(weatherUrl);
         const forecastResponse = await fetch(forecastUrl);
@@ -53,6 +46,9 @@ function formatTimestamp(timestamp) {
 
 function displayCurrentWeather(weatherData, forecastData) {
 
+    if (weatherContent) weatherContent.innerHTML = '';
+    if (weatherForecast) weatherForecast.innerHTML = '';
+
     const weatherInfo = document.createElement('div');
     let weatherLocation= document.createElement('p');
     let weatherDate = document.createElement('p');
@@ -66,17 +62,13 @@ function displayCurrentWeather(weatherData, forecastData) {
     weatherImage.className = 'weather-image';
 
     weatherLocation.setAttribute('id', 'location') 
-    weatherLocation.innerHTML = weatherData.name; //change
-
+    weatherLocation.innerHTML = weatherData.name; 
     weatherDate.setAttribute('id', 'current-date') 
     weatherDate.innerHTML = `${formatTimestamp(weatherData.dt)}<br><br>`;
-
     weatherCond.setAttribute('id', 'condition') 
     weatherCond.innerHTML = weatherData.weather[0].description;
-
     weatherTemp.setAttribute('id', 'temperature') 
     weatherTemp.innerHTML = `Temperature: <strong>${Math.trunc(weatherData.main.temp)}&deg;C</strong>`;
-
     weatherAQI.setAttribute('id', 'aqi') 
     weatherAQI.innerHTML = `Air Quality Index: 40`; //change
 
