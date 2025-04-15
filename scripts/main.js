@@ -1,4 +1,5 @@
-import { HamburgerMenu, ActiveMenu} from "./utils.mjs";
+import { HamburgerMenu, ActiveMenu, displayCurrentWeather} from "./utils.mjs";
 
 HamburgerMenu();
+displayCurrentWeather();
 ActiveMenu();

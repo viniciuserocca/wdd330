@@ -191,7 +191,7 @@ h2 {
     margin: 0 auto;
 }
 
-#city {
+#location {
     font-size: 25px;
     font-weight: 700; 
     margin-bottom: 5px;  
@@ -199,6 +199,10 @@ h2 {
 
 .bold-text {
     font-weight: 700;
+}
+
+#condition {
+    text-transform: capitalize;
 }
 
 @media screen and (min-width: 790px){
@@ -268,7 +272,7 @@ h2 {
     }
 
     #search {
-        width: 300px;
+        width: 360px;
     }
 
     .weather-content {
@@ -280,11 +284,6 @@ h2 {
 
     #last-one {
         display: none;
-    }
-
-    .hf-container {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(6, 200px);
     }
 }
 
