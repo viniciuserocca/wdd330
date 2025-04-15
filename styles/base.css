@@ -119,13 +119,6 @@ footer > p {
     margin: 0 auto;
 }
 
-.hf-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 300px);
-    grid-gap: 1rem;
-}
-
 h2 {
     margin-bottom: 1rem;
 }
@@ -205,6 +198,34 @@ h2 {
     text-transform: capitalize;
 }
 
+.forecast-menu {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.day-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--dark-gray);
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.day-button.active {
+    background-color: var(--light-blue);
+    color: var(--white-color);
+}
+
+.forecast-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
 @media screen and (min-width: 790px){
 
     .header-title {
@@ -254,11 +275,6 @@ h2 {
         border-bottom: 1px solid var(--white-color);
     }
 
-    .hf-container {
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(2, 300px);
-    }
-
     .search-container,
     .weather-content,
     .cwd-container h3
@@ -284,13 +300,5 @@ h2 {
 
     #last-one {
         display: none;
-    }
-}
-
-@media screen and (max-width: 600px){
-
-    .hf-container {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(6, 200px);
     }
 }

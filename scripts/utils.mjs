@@ -103,9 +103,10 @@ function displayCurrentWeather(weatherData, forecastData) {
         const date = entry.dt_txt.split(' ')[0];
         const tempMin = entry.main.temp_min;
         const tempMax = entry.main.temp_max;
+        const icon = entry.weather[0].icon;
         
         if (!dailyTemperatures[date]) {
-            dailyTemperatures[date] = { min: tempMin, max: tempMax };
+            dailyTemperatures[date] = { min: tempMin, max: tempMax, icon: icon };
         } else {
             dailyTemperatures[date].min = Math.min(dailyTemperatures[date].min, tempMin);
             dailyTemperatures[date].max = Math.max(dailyTemperatures[date].max, tempMax);
@@ -123,7 +124,7 @@ function displayCurrentWeather(weatherData, forecastData) {
         }, {});
     
     for (const date in nextThreeDays) {
-        const { min, max} = nextThreeDays[date];
+        const { min, max, icon} = nextThreeDays[date];
         const weekday = new Date(date  + "T00:00").toLocaleDateString("en-US", { weekday: "short" });
 
         let forecastCard = document.createElement('div');
@@ -134,12 +135,12 @@ function displayCurrentWeather(weatherData, forecastData) {
         forecastCard.setAttribute('class', 'daily-weather weather-box') 
         forecastDate.setAttribute('class', 'bold-text') 
         forecastDate.innerHTML = `<strong>${weekday}</strong>`;
-        forecastIcon.setAttribute('src', `images/${weatherData.weather[0].icon}.svg`);
+        forecastIcon.setAttribute('src', `images/${icon}.svg`);
         forecastIcon.setAttribute('alt', `Weather Icon`);
         forecastIcon.setAttribute('width', 100);
         forecastIcon.setAttribute('height', 100);
         forecastTemp.setAttribute('id', 'minmax-paragraph') 
-        forecastTemp.innerHTML = `${Math.trunc(min)}&deg;C/${Math.trunc(max)}&deg;C`;
+        forecastTemp.innerHTML = `${Math.trunc(min)}&deg;C | ${Math.trunc(max)}&deg;C`;
 
         forecastCard.appendChild(forecastDate);
         forecastCard.appendChild(forecastIcon);
