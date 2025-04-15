@@ -98,6 +98,7 @@ function displayCurrentWeather(weatherData, forecastData) {
 
     // Display 3 Day Forecast Info 
     const dailyTemperatures = {};
+    let counter = 1;
     
     forecastData.list.forEach(entry => {
         const date = entry.dt_txt.split(' ')[0];
@@ -133,6 +134,10 @@ function displayCurrentWeather(weatherData, forecastData) {
         let forecastTemp = document.createElement('p');
 
         forecastCard.setAttribute('class', 'daily-weather weather-box') 
+        if (counter == 3) {
+            forecastCard.setAttribute('id', 'last-one'); // add ID to the last card
+        }
+
         forecastDate.setAttribute('class', 'bold-text') 
         forecastDate.innerHTML = `<strong>${weekday}</strong>`;
         forecastIcon.setAttribute('src', `images/${icon}.svg`);
@@ -147,5 +152,6 @@ function displayCurrentWeather(weatherData, forecastData) {
         forecastCard.appendChild(forecastTemp);
 
         weatherForecast.appendChild(forecastCard);
+        counter ++;
         }
 }
