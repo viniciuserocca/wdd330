@@ -253,6 +253,7 @@ h2 {
     background-color: var(--light-gray);
     padding: 10px;
     justify-items: center;
+    justify-content: center;
 }
 
 #controls input {
@@ -436,7 +437,6 @@ h2 {
 
     #origin {
         grid-area: 1 / 1 / 2 / 2;
-        justify-items: center;
     }
 
     #destination {
