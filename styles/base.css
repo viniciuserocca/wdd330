@@ -127,12 +127,8 @@ h2 {
     margin-top: 10px;
 }
 
-.weather-content {
-    grid-area: 3 / 1 / 4 / 1;
-    display: flex;
-    text-align: center;
-    gap: 2rem;
-    margin: 0 auto;
+.rbw-container {
+    justify-items: center;
 }
 
 /*======  Current Weather Page  ======*/
@@ -148,6 +144,14 @@ h2 {
     background: none;
     height: 35px;
     width: 260px;
+}
+
+.weather-content {
+    grid-area: 3 / 1 / 4 / 1;
+    display: flex;
+    text-align: center;
+    gap: 2rem;
+    margin: 0 auto;
 }
 
 .weather-info,
@@ -253,12 +257,12 @@ h2 {
 
 #controls {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(3, 45px);
     gap: 1rem;
     background-color: var(--light-gray);
     padding: 10px;
-    justify-content: center;
+    justify-items: center;
 }
 
 #controls input {
@@ -287,6 +291,7 @@ h2 {
     color: var(--red-color);
     font-weight: bold;
     margin-top: 10px;
+    grid-area: 3 / 1 / 4 / 3;
 }
 
 #weather-info {
@@ -415,9 +420,14 @@ h2 {
     }
 }
 
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 490px) {
 
     #last-one {
         display: none;
+    }
+
+    #controls input {
+        width: 150px;
+        margin: 0;
     }
 }
