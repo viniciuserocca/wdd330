@@ -22,17 +22,30 @@
             <button id="menu" aria-label="HamburgerMenu"></button>
             <nav class="navigation">
                 <a href="../index.html" title="cwd" id="cwd">Current Weather Data</a>
-                <a href="#" title="hf" id="hf" class="active">Hourly Forecast</a>
+                <a href="hourly-page.html" title="hf" id="hf">Hourly Forecast</a>
                 <a href="alerts.html" title="wa" id="wa">Weather Alerts</a>
-                <a href="route.html" title="rbw" id="rbw">Route-Based Weather</a>
+                <a href="#" title="rbw" id="rbw" class="active">Route-Based Weather</a>
             </nav>
         </div>
     </header>
     <main>
-        <h2>Hourly Forecast</h2>
+        <h2>Route-Based Weather </h2>
         <div class="weather-box">
-            <div id="forecastMenu" class="forecast-menu"></div>
-            <div id="hourlyForecast" class="forecast-cards"></div>
+            <div id="controls" class="weather-box">
+                <input type="text" id="origin" autocomplete="off" placeholder="Enter origin">
+                <input type="text" id="destination" autocomplete="off" placeholder="Enter destination">
+                <button id="getRouteBtn">Get Route</button>
+                <div id="error"></div>
+            </div>
+            <div id="map"></div>
+            <div id="route-info"><br>
+                <p id="distance"></p>
+                <p id="duration"></p>
+            </div>
+            <div id="weather-info" class="weather-box">
+                <h3>Weather Forecast Along Route:</h3>
+                <ul id="weather-list"></ul>
+            </div>
         </div>
     </main>
     <footer>
@@ -40,6 +53,7 @@
         <p>Vinicius Rocca</p>
         <p>WDD 330 - Web Frontend Development II</p>
     </footer>
-    <script src="../scripts/forecast.js" type="module"></script>
+    <script src="../scripts/routeBased.js" type="module"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkkWXVj5M6yEL_pTbSb04zR-DXShgUtLo"></script>
 </body>
 </html>

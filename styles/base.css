@@ -1,20 +1,17 @@
 :root {
     --dark-blue: #1B263B;
     --light-blue: #48669e;
-    --light-gray: #f7f7f7;
+    --light-gray: #e7e7e7;
     --dark-gray: #ddd;
-    --blue-color: #0339c2;
     --white-color: #fff;
     --black-color: #000;
-    --yellow-color: #ffff00;
     --red-color: #AB1313;
-    --link-color: #014f74;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 main {
@@ -29,7 +26,7 @@ body {
     text-align: center;
 }
 
-header, 
+header,
 footer {
     background-color: var(--dark-blue);
     color: var(--white-color);
@@ -44,34 +41,38 @@ footer {
     align-content: center;
 }
 
-footer > p {
+footer>p {
     margin: .5rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
 }
 
 /*======  Navigation Menu  ======*/
 
 .navigation {
-	display: flex;
-	flex-direction: column;
-	list-style: none;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
     text-wrap: nowrap;
     padding-bottom: 1rem;
 }
 
 .navigation a {
-	display: none;
-	padding: .5rem;
+    display: none;
+    padding: .5rem;
     margin-top: .5rem;
     margin-left: 0;
-	text-align: center;
-	text-decoration: none;
-	color: var(--white-color); 
+    text-align: center;
+    text-decoration: none;
+    color: var(--white-color);
     padding: 1rem;
     border-radius: 15px;
 }
 
 .navigation a:hover {
-	font-weight: 700;
+    font-weight: 700;
     background-color: var(--light-blue);
 }
 
@@ -84,25 +85,27 @@ footer > p {
 
 #menu {
     font-size: 48px;
-	background: none;
+    background: none;
     border: 0;
-	color: var(--white-color);
-	position: absolute;
-	top: 2.5rem;
-	right: 1rem;
+    color: var(--white-color);
+    position: absolute;
+    top: 2.5rem;
+    right: 1rem;
 }
 
 #menu::before {
-	content: "☰";
+    content: "☰";
 }
 
 #menu.open::before {
-	content: "X";
+    content: "X";
 }
 
 .open a {
-	display: block;
+    display: block;
 }
+
+/*======  Containers  ======*/
 
 .cwd-container {
     display: grid;
@@ -119,26 +122,9 @@ footer > p {
     margin: 0 auto;
 }
 
-h2 {
-    margin-bottom: 1rem;
-}
-
 .cwd-container h3 {
     grid-area: 1 / 1 / 2 / 1;
     margin-top: 10px;
-}
-  
-#search{
-    float:left;
-    background-color:transparent;
-    padding-left:5px;
-    font-style:italic;
-    font-size:18px;
-    border:none;
-    outline: none; 
-    background: none;
-    height:35px;
-    width:260px;
 }
 
 .weather-content {
@@ -149,18 +135,32 @@ h2 {
     margin: 0 auto;
 }
 
+/*======  Current Weather Page  ======*/
+
+#search {
+    float: left;
+    background-color: transparent;
+    padding-left: 5px;
+    font-style: italic;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: none;
+    height: 35px;
+    width: 260px;
+}
+
 .weather-info,
-.weather-image
-{
+.weather-image {
     align-content: center;
 }
 
 .weekly-weather {
     display: flex;
-    gap: 10px; /* Reduce this value to bring cards closer */
+    gap: 10px;
     justify-content: center;
     align-items: center;
-  }
+}
 
 .weather-box {
     background-color: var(--white-color);
@@ -186,8 +186,8 @@ h2 {
 
 #location {
     font-size: 25px;
-    font-weight: 700; 
-    margin-bottom: 5px;  
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .bold-text {
@@ -202,12 +202,14 @@ h2 {
     height: 50vh;
     width: 80%;
     margin: 0 auto;
-    margin-top: 4rem;
-  }
+    margin-top: 2rem;
+}
 
 #search-button {
     cursor: pointer;
 }
+
+/*======  Hourly Forecast Page  ======*/
 
 .forecast-menu {
     display: flex;
@@ -237,7 +239,102 @@ h2 {
     justify-content: center;
 }
 
-@media screen and (min-width: 790px){
+/*======  Alerts Page  ======*/
+
+#weather-alerts {
+    border-left: 6px solid var(--red-color);
+    padding: 12px 16px;
+    font-family: sans-serif;
+    font-size: 14px;
+    background-color: var(--white-color);
+}
+
+/*======  Route-Based Page  ======*/
+
+#controls {
+    background-color: var(--light-gray);
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+#controls input {
+    padding: 8px;
+    font-size: 16px;
+    width: 200px;
+}
+
+#controls button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--light-blue);
+    color: var(--white-color);
+    border: none;
+    border-radius: 10px;
+}
+
+#controls button:hover {
+    background-color: var(--dark-blue);
+}
+
+#error {
+    color: var(--red-color);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#weather-info {
+    background-color: var(--light-gray);
+    padding: 20px;
+    margin: 20px auto;
+    display: none;
+}
+
+#weather-info h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#weather-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#weather-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#weather-list li img {
+    width: 50px;
+    height: 50px;
+}
+
+#weather-list li span {
+    font-size: 14px;
+    color: #333;
+}
+
+#weather-list li span:nth-child(2),
+#weather-list li span:nth-child(3) {
+    margin-left: 10px;
+}
+
+#route-info {
+    display: none;
+}
+
+@media screen and (min-width: 790px) {
 
     .header-title {
         display: flex;
@@ -246,7 +343,7 @@ h2 {
     }
 
     .header-menu {
-        display: flex;  
+        display: flex;
         justify-content: space-around;
         align-items: center;
         margin-top: 1rem;
@@ -254,28 +351,28 @@ h2 {
 
     /*======  Navigation Menu  ======*/
 
-	.navigation {
+    .navigation {
         justify-content: flex-end;
-		flex-direction: row;
-	}
+        flex-direction: row;
+    }
 
-	.navigation a {
-		display: block;
-		flex: 1 1 100%;
+    .navigation a {
+        display: block;
+        flex: 1 1 100%;
         margin-top: 0;
         margin-left: .5rem;
-	}
+    }
 
     /*======  Hamburger Menu  ======*/
 
     #menu {
-		display: none;
-	}
+        display: none;
+    }
 
     .bottom-border {
         position: relative;
     }
-      
+
     .bottom-border::after {
         content: '';
         position: absolute;
@@ -288,8 +385,7 @@ h2 {
 
     .search-container,
     .weather-content,
-    .cwd-container h3
-    {
+    .cwd-container h3 {
         margin-left: 150px;
         text-align: left;
     }
@@ -307,7 +403,7 @@ h2 {
     }
 }
 
-@media screen and (max-width: 475px){
+@media screen and (max-width: 475px) {
 
     #last-one {
         display: none;
