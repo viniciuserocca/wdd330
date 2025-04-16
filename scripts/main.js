@@ -3,7 +3,6 @@ import { getCurrentPosition } from "./getCurrentPosition.mjs";
 import { getCoordinates } from "./getCoordinates.mjs";
 import { display } from "./display.mjs";
 
-
 HamburgerMenu();
 getCurrentPosition();
 
