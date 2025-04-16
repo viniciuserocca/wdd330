@@ -426,7 +426,8 @@ h2 {
 
 @media screen and (max-width: 490px) {
 
-    #last-one {
+    #last-one,
+    #eta {
         display: none;
     }
 
