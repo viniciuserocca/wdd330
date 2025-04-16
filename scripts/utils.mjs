@@ -1,3 +1,5 @@
+const openWeatherApiKey = '15734b5411a831554cc7dadec5d3fbf8';
+
 export function HamburgerMenu(){
     const hamButton = document.querySelector('#menu');
     const navigation = document.querySelector('.navigation');
@@ -22,9 +24,9 @@ export async function getLatLon(){
         lon = savedLocation.lon;
     }
     
-    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597`;
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597`;
-    const AQIUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=bf4bfee1ad11f82006a74a4d5990e597`;
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${openWeatherApiKey}`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${openWeatherApiKey}`;
+    const AQIUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${openWeatherApiKey}`;
   
     return { weatherUrl, forecastUrl, AQIUrl };
   }

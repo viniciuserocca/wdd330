@@ -1,3 +1,5 @@
+const openWeatherApiKey = '15734b5411a831554cc7dadec5d3fbf8';
+
 export function displayMapOverlay() {
     const mapContainer = document.getElementById('map');
 
@@ -31,7 +33,7 @@ export function displayMapOverlay() {
     }).addTo(map);
 
     const weatherLayer = L.tileLayer(
-        `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=bf4bfee1ad11f82006a74a4d5990e597`,
+        `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${openWeatherApiKey}`,
         {
             attribution: 'Weather data © <a href="https://openweathermap.org/">OpenWeather</a>',
             opacity: 0.6

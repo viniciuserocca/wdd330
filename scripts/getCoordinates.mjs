@@ -1,11 +1,13 @@
 import { display } from "./display.mjs";
 
+const openWeatherApiKey = '15734b5411a831554cc7dadec5d3fbf8';
+
 export function getCoordinates() {
   const searchInput = document.getElementById('search');
   const city = searchInput.value.trim();
   if (!city) return;
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=bf4bfee1ad11f82006a74a4d5990e597`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${openWeatherApiKey}`;
 
   fetch(url)
     .then(response => {

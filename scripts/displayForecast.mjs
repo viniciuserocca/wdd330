@@ -1,3 +1,5 @@
+const openWeatherApiKey = '15734b5411a831554cc7dadec5d3fbf8';
+
 export function getCurrentPosition() {
     const DEFAULT_LAT = 43.82256070108409;
     const DEFAULT_LON = -111.7918827257959;
@@ -37,7 +39,7 @@ export function getCurrentPosition() {
     }
 
     function fetchForecastData(lat, lon) {
-        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=bf4bfee1ad11f82006a74a4d5990e597`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${openWeatherApiKey}`;
         apiFetch(forecastUrl);
     }
 }
