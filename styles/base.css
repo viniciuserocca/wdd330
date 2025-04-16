@@ -127,10 +127,6 @@ h2 {
     margin-top: 10px;
 }
 
-.rbw-container {
-    justify-items: center;
-}
-
 /*======  Current Weather Page  ======*/
 
 #search {
@@ -254,7 +250,7 @@ h2 {
     padding: 10px;
     justify-items: center;
     justify-content: center;
-    min-width: 350px;
+    margin: 0 auto;
 }
 
 #controls input {

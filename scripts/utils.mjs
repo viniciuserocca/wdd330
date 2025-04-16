@@ -1,5 +1,3 @@
-import { getCurrentPosition } from "./getCurrentPosition.mjs";
-
 export function HamburgerMenu(){
     const hamButton = document.querySelector('#menu');
     const navigation = document.querySelector('.navigation');
