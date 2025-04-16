@@ -100,11 +100,12 @@ window.handleRoute = async function () {
                         weatherItem.appendChild(tempText);
 
                         const descriptionText = document.createElement("span");
-                        descriptionText.setAttribute('id', 'condition') 
+                        descriptionText.setAttribute('id', 'condition'); 
                         descriptionText.textContent = `Description: ${weather.description}`;
                         weatherItem.appendChild(descriptionText);
 
                         const etaText = document.createElement("span");
+                        etaText.setAttribute('id', 'eta'); 
                         etaText.textContent = `ETA: ${eta.toLocaleTimeString()}`;
                         weatherItem.appendChild(etaText);
 
