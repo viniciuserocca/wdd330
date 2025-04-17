@@ -1,9 +1,10 @@
 import { display } from "./display.mjs";
 
+const DEFAULT_LAT = 43.82256070108409;
+const DEFAULT_LON = -111.7918827257959;
+
 export function getCurrentPosition() {
-    const DEFAULT_LAT = 43.82256070108409;
-    const DEFAULT_LON = -111.7918827257959;
-  
+    
     const savedLocation = JSON.parse(localStorage.getItem("userLocation"));
   
     if (savedLocation) {
@@ -36,3 +37,14 @@ export function getCurrentPosition() {
       localStorage.setItem("userLocation", JSON.stringify({ lat: DEFAULT_LAT, lon: DEFAULT_LON }));
     }
 }
+
+function initLocalStorage(){
+
+  const savedLocation = JSON.parse(localStorage.getItem("userLocation"));
+  
+    if (!savedLocation) {
+      localStorage.setItem("userLocation", JSON.stringify({ lat: DEFAULT_LAT, lon: DEFAULT_LON }));
+    }
+}
+
+initLocalStorage();
