@@ -1,3 +1,5 @@
+/* global L */
+
 const openWeatherApiKey = '15734b5411a831554cc7dadec5d3fbf8';
 
 export function displayMapOverlay() {
