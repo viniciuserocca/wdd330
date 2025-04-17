@@ -7,11 +7,10 @@ export function getCurrentPosition() {
     
     const savedLocation = JSON.parse(localStorage.getItem("userLocation"));
   
-    if (savedLocation) {
-      return;
-    }
-  
-    if ("geolocation" in navigator) {
+    if (!savedLocation) {
+      localStorage.setItem("userLocation", JSON.stringify({ lat: DEFAULT_LAT, lon: DEFAULT_LON }));
+      
+      if ("geolocation" in navigator) {
         const options = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -36,15 +35,8 @@ export function getCurrentPosition() {
       console.warn("Geolocation not supported. Using default.");
       localStorage.setItem("userLocation", JSON.stringify({ lat: DEFAULT_LAT, lon: DEFAULT_LON }));
     }
-}
-
-function initLocalStorage(){
-
-  const savedLocation = JSON.parse(localStorage.getItem("userLocation"));
-  
-    if (!savedLocation) {
-      localStorage.setItem("userLocation", JSON.stringify({ lat: DEFAULT_LAT, lon: DEFAULT_LON }));
+    } else {
+      return;
     }
+  
 }
-
-initLocalStorage();
