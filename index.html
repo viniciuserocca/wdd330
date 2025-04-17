@@ -16,8 +16,10 @@
 <body>
     <header>
         <div class="header-title bottom-border">
-            <img src="images/weather-icon.png" width="100" height="100">
-            <h1>Weather Now</h1>
+            <a href="#">
+                <img src="images/weather-icon.png" alt="Weather Icon" width="100" height="100">
+                <h1>Weather Now</h1>
+            </a>
         </div>
         <div class="header-menu">
             <button id="menu" aria-label="HamburgerMenu"></button>
@@ -33,8 +35,8 @@
         <div class="cwd-container weather-box-static">
             <label for="search" class="search-label">Enter a city</label>
             <div class="search-container">
-                <input type="text" list="history" autocomplete="off" id="search" placeholder="Search..."/>
-                <img src="images/search-icon.svg" id="search-button" alt="Search"/>
+                <input type="text" list="history" autocomplete="off" id="search" placeholder="Search...">
+                <img src="images/search-icon.svg" id="search-button" alt="Search">
                 <datalist id="history"></datalist>
             </div>
             <div class="weather-content"></div>

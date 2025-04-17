@@ -36,6 +36,13 @@ header {
     display: block;
 }
 
+header a {
+    all: unset;
+    align-items: center;
+    cursor: pointer;
+}
+
+
 footer {
     height: 200px;
     align-content: center;
@@ -383,6 +390,11 @@ h2 {
 }
 
 @media screen and (min-width: 790px) {
+
+    header a {
+        gap: 0.5rem; 
+        display: flex;
+    }
 
     .header-title {
         display: flex;
