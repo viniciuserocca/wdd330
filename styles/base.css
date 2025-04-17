@@ -389,6 +389,10 @@ h2 {
     align-content: right;
 }
 
+#clearRouteBtn:hover {
+    background-color: var(--dark-blue);
+}
+
 @media screen and (min-width: 790px) {
 
     header a {
