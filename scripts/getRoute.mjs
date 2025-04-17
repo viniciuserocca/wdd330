@@ -5,12 +5,10 @@ let directionsRenderer;
 let weatherMarkers = [];
 
 export function initMap() {
-
     const savedLocation = JSON.parse(localStorage.getItem("userLocation"));
     const { lat, lon } = savedLocation;
 
     let zoomLvl;
-
     if (Math.abs(lat) < 25 && Math.abs(lon) < 50) {
         zoomLvl = 12;
     } else if (Math.abs(lat) < 50 && Math.abs(lon) < 50) {
@@ -18,13 +16,24 @@ export function initMap() {
     } else {
         zoomLvl = 6;
     }
-    
+
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: zoomLvl,
         center: { lat: lat, lng: lon },
     });
 
     directionsRenderer = new google.maps.DirectionsRenderer({ map });
+
+    const lastRoute = JSON.parse(localStorage.getItem("lastRoute"));
+    if (lastRoute) {
+        document.getElementById("origin").value = lastRoute.origin;
+        document.getElementById("destination").value = lastRoute.destination;
+
+        handleRoute();
+
+        document.getElementById("route-info").style.display = "block";
+        document.getElementById("weather-info").style.display = "block";
+    }
 }
 
 window.handleRoute = async function () {
@@ -39,6 +48,8 @@ window.handleRoute = async function () {
         errorDiv.textContent = "Please fill in both origin and destination.";
         return;
     }
+
+    localStorage.setItem("lastRoute", JSON.stringify({ origin, destination }));
 
     const directionsService = new google.maps.DirectionsService();
     directionsRenderer.setMap(null);
@@ -149,3 +160,22 @@ document.getElementById("getRouteBtn").addEventListener("click", () => {
     document.getElementById("route-info").style.display = "block";
     document.getElementById("weather-info").style.display = "block";
   });
+
+  document.getElementById("clearRouteBtn").addEventListener("click", () => {
+    localStorage.removeItem("lastRoute");
+
+    directionsRenderer.setDirections({ routes: [] });
+
+    weatherMarkers.forEach(marker => marker.setMap(null));
+    weatherMarkers = [];
+
+    document.getElementById("origin").value = '';
+    document.getElementById("destination").value = '';
+
+    document.getElementById("route-info").style.display = "none";
+    document.getElementById("weather-info").style.display = "none";
+
+    document.getElementById("weather-list").innerHTML = '';
+    document.getElementById("distance").textContent = '';
+    document.getElementById("duration").textContent = '';
+});

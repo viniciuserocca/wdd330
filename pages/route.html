@@ -29,19 +29,22 @@
     </header>
     <main>
         <h2>Route-Based Weather </h2>
-        <div class="weather-box">
-            <div id="controls" class="weather-box">
+        <div class="weather-box-static">
+            <div id="controls" class="weather-box-static">
                 <input type="text" id="origin" autocomplete="off" placeholder="Enter origin">
                 <input type="text" id="destination" autocomplete="off" placeholder="Enter destination">
                 <button id="getRouteBtn">Get Route</button>
                 <div id="error"></div>
             </div>
             <div id="map"></div>
+            <div class="btn">
+                <button id="clearRouteBtn">Clear Route</button>
+            </div>
             <div id="route-info"><br>
                 <p id="distance"></p>
                 <p id="duration"></p>
             </div>
-            <div id="weather-info" class="weather-box">
+            <div id="weather-info" class="weather-box-static">
                 <h3>Weather Forecast Along Route:</h3>
                 <ul id="weather-list"></ul>
             </div>

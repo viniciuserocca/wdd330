@@ -122,7 +122,7 @@ h2 {
     margin: 0 auto;
 }
 
-.cwd-container h3 {
+.search-label {
     grid-area: 1 / 1 / 2 / 1;
     margin-top: 10px;
 }
@@ -142,12 +142,22 @@ h2 {
     width: 260px;
 }
 
+#search-button {
+    cursor: pointer;
+}
+
+.search-label {
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
 .weather-content {
     grid-area: 3 / 1 / 4 / 1;
     display: flex;
     text-align: center;
     gap: 2rem;
     margin: 0 auto;
+    animation: fadeIn 0.8s ease forwards;
 }
 
 .weather-info,
@@ -168,6 +178,20 @@ h2 {
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
+}
+
+.weather-box-static {
+    background-color: var(--white-color);
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 }
 
 .daily-weather {
@@ -203,10 +227,6 @@ h2 {
     width: 80%;
     margin: 0 auto;
     margin-top: 2rem;
-}
-
-#search-button {
-    cursor: pointer;
 }
 
 /*======  Hourly Forecast Page  ======*/
@@ -343,6 +363,25 @@ h2 {
     display: none;
 }
 
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#clearRouteBtn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--light-blue);
+    color: var(--white-color);
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    align-content: right;
+}
+
 @media screen and (min-width: 790px) {
 
     .header-title {
@@ -394,7 +433,7 @@ h2 {
 
     .search-container,
     .weather-content,
-    .cwd-container h3 {
+    .search-label {
         margin-left: 150px;
         text-align: left;
     }
@@ -433,5 +472,16 @@ h2 {
 
     #controls input {
         margin: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

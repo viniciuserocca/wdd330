@@ -30,11 +30,12 @@
     </header>
     <main>
         <h2>Current Weather Data</h2>
-        <div class="cwd-container weather-box">
-            <h3>Enter a city</h3>
+        <div class="cwd-container weather-box-static">
+            <label for="search" class="search-label">Enter a city</label>
             <div class="search-container">
-                <input type="text" autocomplete="off" id="search" placeholder="Search..."/>
+                <input type="text" list="history" autocomplete="off" id="search" placeholder="Search..."/>
                 <img src="images/search-icon.svg" id="search-button" alt="Search"/>
+                <datalist id="history"></datalist>
             </div>
             <div class="weather-content"></div>
             <div class="weekly-weather"></div>

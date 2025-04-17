@@ -1,4 +1,5 @@
 import { display } from "./display.mjs";
+import { saveSearchToHistory } from "./searchHistory.mjs";
 
 const openWeatherApiKey = '15734b5411a831554cc7dadec5d3fbf8';
 
@@ -19,6 +20,7 @@ export function getCoordinates() {
       const lon = data.coord.lon;
       const location = { lat, lon };
       localStorage.setItem('userLocation', JSON.stringify(location));
+      saveSearchToHistory(city);
       display();
     })
     .catch(err => {
